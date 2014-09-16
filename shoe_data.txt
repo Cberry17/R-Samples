@@ -1,0 +1,347 @@
+
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.1.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.65 (6784) x86_64-apple-darwin13.1.0]
+
+[Workspace restored from /Users/chanceberry/.RData]
+[History restored from /Users/chanceberry/.Rapp.history]
+
+> library ("RCurl")
+Loading required package: bitops
+Warning: dependency ‘Rcompression’ is not available
+trying URL 'http://watson.nci.nih.gov/cran_mirror/src/contrib/RCurl_1.95-4.3.tar.gz'
+Content type 'application/octet-stream' length 879143 bytes (858 Kb)
+opened URL
+==================================================
+downloaded 858 Kb
+
+* installing *source* package ‘RCurl’ ...
+** package ‘RCurl’ successfully unpacked and MD5 sums checked
+checking for curl-config... /usr/bin/curl-config
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -E
+                        ^~~
+/Library/Frameworks/R.framework/Resources/include/Rinternals.h:841:33: note: passing argument to parameter here
+SEXP Rf_mkCharLenCE(const char *, int, cetype_t);
+                                ^
+myUTF8.c:101:14: warning: unused variable 'mbcslocale' [-Wunused-variable]
+    Rboolean mbcslocale = TRUE;
+             ^
+myUTF8.c:17:12: warning: unused function 'mbcs_get_next2' [-Wunused-function]
+static int mbcs_get_next2(int c, ucs_t *wc)
+           ^
+3 warnings generated.
+clang -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/usr/local/lib -o RCurl.so base64.o curl.o curlInit.o curl_base64.o enums.o json.o memoryManagement.o myUTF8.o -lcurl -lxml2 -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Library/Frameworks/R.framework/Versions/3.1/Resources/library/RCurl/libs
+** R
+** data
+** inst
+** preparing package for lazy loading
+Creating a generic function for ‘close’ from package ‘base’ in package ‘RCurl’
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (RCurl)
+
+The downloaded source packages are in
+	‘/private/var/folders/t6/h3cvb7fn66q0ggqy09hglkgm0000gn/T/Rtmp2JGOpx/downloaded_packages’
+> library("RCurl")
+> url <- "https://docs.google.com/spreadsheets/d/1od4kVLJ2320rCzq5Qqi2i79PurTqCgjdN2M8T0mNYs8/edit#gid=481270353"
+> spreadsheet.data <- getURL(url,ssl.verifypeer=FALSE)
+> str(spreadsheet.data)
+ chr "<HTML>\n<HEAD>\n<TITLE>Moved Temporarily</TITLE>\n</HEAD>\n<BODY BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\">\n<H1>Moved Temporarily</"| __truncated__
+> points <- read.csv (textConnection(spreadsheet.data))
+> str(points)
+'data.frame':	8 obs. of  1 variable:
+ $ X.HTML.: Factor w/ 8 levels "</BODY>","</HEAD>",..: 6 7 2 4 5 8 1 3
+> getwd()
+[1] "/Users/chanceberry"
+> dir()
+[1] "Applications" "Desktop"      "Documents"    "Downloads"   
+[5] "Library"      "Movies"       "Music"        "Pictures"    
+[9] "Public"      
+> dir("Documents")
+ [1] "Chance Berry Cover Letter.docx"                
+ [2] "Chance Berry Resume.docx"                      
+ [3] "Chance Berry.docx"                             
+ [4] "Cycling Resume.docx"                           
+ [5] "First Individual Presentation .docx"           
+ [6] "FirstIndividualPresentation#2.docx"            
+ [7] "hello"                                         
+ [8] "hello <- function(){"                          
+ [9] "hello <- function(){.R"                        
+[10] "hello.R"                                       
+[11] "IA200 Threat Assessment.docx"                  
+[12] "July 20 -26.csv"                               
+[13] "Microsoft User Data"                           
+[14] "quakes.csv"                                    
+[15] "RDC Connections"                               
+[16] "Salutatorian Speech.docx"                      
+[17] "The IS in Syria and Iraq.docx"                 
+[18] "The new _Islamic State_ in Syria and Iraq.pptx"
+[19] "The new “Islamic State” in Syria and Iraq.pptx"
+[20] "Track Workouts.docx"                           
+[21] "Who I am.docx"                                 
+[22] "Workbook1.xlsx"                                
+> dir("Downloads")
+ [1] "117151-004-009t.jpg"                                               
+ [2] "117151-027-022t.jpg"                                               
+ [3] "117151-027-023t.jpg"                                               
+ [4] "117151-027-024t.jpg"                                               
+ [5] "1798280_10153729212150551_48048398_n.jpg"                          
+ [6] "2013_USAT_Junior_Elite_Men_National_Rankings_Final.pdf"            
+ [7] "2013-international-luray-results.xlsx"                             
+ [8] "30day-plank-challenge-chart.png"                                   
+ [9] "About Downloads.lpdf"                                              
+[10] "Acquiring Data.doc"                                                
+[11] "AdobeFlashPlayerInstaller_11_aaa_aih.dmg"                          
+[12] "AdobeFlashPlayerInstaller_11_aih.dmg"                              
+[13] "AdobeFlashPlayerInstaller_11au_ltrosxd_aaa_aih.dmg"                
+[14] "AdobeFlashPlayerInstaller_12au_ltrosxd_aaa_aih.dmg"                
+[15] "AdobeFlashPlayerInstaller_13_ltrosxd_aaa_aih.dmg"                  
+[16] "AdobeFlashPlayerInstaller_13au_ltrosxd_aaa_aih.dmg"                
+[17] "AdobeFlashPlayerInstaller_14au_ltrosxd_aaa_aih.dmg"                
+[18] "AdobeReaderInstaller_11_en_aih.dmg"                                
+[19] "AdobeReaderInstaller_11_en_ltrosxd_aaa_aih-1.dmg"                  
+[20] "AdobeReaderInstaller_11_en_ltrosxd_aaa_aih.dmg"                    
+[21] "AirPassengers.csv"                                                 
+[22] "AirPassengers.csv.webarchive"                                      
+[23] "APN Template.docx"                                                 
+[24] "bco4lN_R.pdf.part"                                                 
+[25] "Chance Berry Resume.docx"                                          
+[26] "CommunicatorPluginforMac_420.dmg"                                  
+[27] "Factsheet-BokoHaram-May142014.pdf"                                 
+[28] "Firefox 22.0.dmg"                                                  
+[29] "Firefox 28.0.dmg"                                                  
+[30] "First Function.R"                                                  
+[31] "FirstIndividualPresentation.docx.docx"                             
+[32] "g-1.jpg"                                                           
+[33] "g.jpg"                                                             
+[34] "GarminExpressInstaller.dmg"                                        
+[35] "IA Program Advising Document.pdf"                                  
+[36] "Install Respondus LockDown Browser 3382128960.pkg"                 
+[37] "Install Spotify.app"                                               
+[38] "install_flash_player_osx.dmg"                                      
+[39] "InstallLDBPackage.zip"                                             
+[40] "Job"                                                               
+[41] "Job(1)"                                                            
+[42] "JOB(2)"                                                            
+[43] "jre-7u55-macosx-x64.dmg"                                           
+[44] "meeting.collab"                                                    
+[45] "Mens_Elite_Individual_Team_Trial.pdf"                              
+[46] "PEF"                                                               
+[47] "practice with R.R"                                                 
+[48] "Psychology Intelligence Analysis.pdf"                              
+[49] "quakes.csv"                                                        
+[50] "R-3.1.1-mavericks.pkg"                                             
+[51] "Sublime Text Build 3065.dmg"                                       
+[52] "u-s-assessment-of-syrian-government-use-of.pdf"                    
+[53] "Whats your Favorite Shoe Brand- (Responses) - Form Responses 1.csv"
+> temp <- read.csv("Whats Your Favorite Shoe Brand- (Responses) - Form Responses 1.csv")
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'Whats Your Favorite Shoe Brand- (Responses) - Form Responses 1.csv': No such file or directory
+> dir(documents)
+Error in dir(documents) : object 'documents' not found
+> dir()
+[1] "Applications" "Desktop"      "Documents"    "Downloads"   
+[5] "Library"      "Movies"       "Music"        "Pictures"    
+[9] "Public"      
+> dir("Documents")
+ [1] "Chance Berry Cover Letter.docx"                                    
+ [2] "Chance Berry Resume.docx"                                          
+ [3] "Chance Berry.docx"                                                 
+ [4] "Cycling Resume.docx"                                               
+ [5] "First Individual Presentation .docx"                               
+ [6] "FirstIndividualPresentation#2.docx"                                
+ [7] "hello"                                                             
+ [8] "hello <- function(){"                                              
+ [9] "hello <- function(){.R"                                            
+[10] "hello.R"                                                           
+[11] "IA200 Threat Assessment.docx"                                      
+[12] "July 20 -26.csv"                                                   
+[13] "Microsoft User Data"                                               
+[14] "quakes.csv"                                                        
+[15] "RDC Connections"                                                   
+[16] "Salutatorian Speech.docx"                                          
+[17] "The IS in Syria and Iraq.docx"                                     
+[18] "The new _Islamic State_ in Syria and Iraq.pptx"                    
+[19] "The new “Islamic State” in Syria and Iraq.pptx"                    
+[20] "Track Workouts.docx"                                               
+[21] "Whats your Favorite Shoe Brand- (Responses) - Form Responses 1.csv"
+[22] "Who I am.docx"                                                     
+[23] "Workbook1.xlsx"                                                                          
+
+/Library/Frameworks/R.framework/Resources/include/Rinternals.h:841:33: note: passing argument to parameter here
+SEXP Rf_mkCharLenCE(const char *, int, cetype_t);
+                                ^
+myUTF8.c:101:14: warning: unused variable 'mbcslocale' [-Wunused-variable]
+    Rboolean mbcslocale = TRUE;
+             ^
+myUTF8.c:17:12: warning: unused function 'mbcs_get_next2' [-Wunused-function]
+static int mbcs_get_next2(int c, ucs_t *wc)
+           ^
+3 warnings generated.
+clang -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/usr/local/lib -o RCurl.so base64.o curl.o curlInit.o curl_base64.o enums.o json.o memoryManagement.o myUTF8.o -lcurl -lxml2 -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Library/Frameworks/R.framework/Versions/3.1/Resources/library/RCurl/libs
+** R
+** data
+** inst
+** preparing package for lazy loading
+Creating a generic function for ‘close’ from package ‘base’ in package ‘RCurl’
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (RCurl)
+
+The downloaded source packages are in
+	‘/private/var/folders/t6/h3cvb7fn66q0ggqy09hglkgm0000gn/T/Rtmp2JGOpx/downloaded_packages’
+> library("RCurl")
+> url <- "https://docs.google.com/spreadsheets/d/1od4kVLJ2320rCzq5Qqi2i79PurTqCgjdN2M8T0mNYs8/edit#gid=481270353"
+> > spreadsheet.data <- getURL (url,ssl, verifypeer=FALSE)
+Error: unexpected '>' in ">"
+> > spreadsheet.data <- getURL(url,ssl,verifypeer=FALSE)
+Error: unexpected '>' in ">"
+
+
+
+
+
+
+
+> getwd()
+[1] "/Users/chanceberry"
+> dir()
+[1] "Applications" "Desktop"      "Documents"    "Downloads"   
+[5] "Library"      "Movies"       "Music"        "Pictures"    
+[9] "Public"      
+> setwd("/Users/chanceberry/Documents")
+> getwd()
+[1] "/Users/chanceberry/Documents"
+> shoe_data <- read.csv("shoe_data.csv",header=T)
+> shoe_data
+       Timestamp                 shoe
+1   9/10/14 8:14                 Nike
+2   9/10/14 8:52                 Nike
+3   9/10/14 9:26               Adidas
+4  9/10/14 11:52 Under Armour\xe5\xca
+5  9/10/14 13:38                Other
+6  9/10/14 14:10                Asics
+7  9/10/14 16:35                Other
+8  9/10/14 18:47                Asics
+9  9/10/14 20:19                 Nike
+10 9/10/14 22:10                Other
+11 9/10/14 23:02                 Nike
+12 9/10/14 23:47                 Nike
+13 9/11/14 11:04                 Nike
+14 9/11/14 11:11                 Nike
+15 9/11/14 11:14 Under Armour\xe5\xca
+16 9/11/14 12:39                 Nike
+17 9/11/14 12:45                 Nike
+18 9/11/14 12:50                 Nike
+19 9/11/14 12:50                 Nike
+> shoe_data <- read.csv("shoe_data.csv",header=T)
+> shoe_data
+       Timestamp             shoe
+1   9/10/14 8:14             Nike
+2   9/10/14 8:52             Nike
+3   9/10/14 9:26           Adidas
+4  9/10/14 11:52 Under Armour\xca
+5  9/10/14 13:38            Other
+6  9/10/14 14:10            Asics
+7  9/10/14 16:35            Other
+8  9/10/14 18:47            Asics
+9  9/10/14 20:19             Nike
+10 9/10/14 22:10            Other
+11 9/10/14 23:02             Nike
+12 9/10/14 23:47             Nike
+13 9/11/14 11:04             Nike
+14 9/11/14 11:11             Nike
+15 9/11/14 11:14 Under Armour\xca
+16 9/11/14 12:39             Nike
+17 9/11/14 12:45             Nike
+18 9/11/14 12:50             Nike
+19 9/11/14 12:50             Nike
+> shoe_data <- read.csv("shoe_data.csv",header=T)
+> shoe_data
+       Timestamp             shoe
+1   9/10/14 8:14             Nike
+2   9/10/14 8:52             Nike
+3   9/10/14 9:26           Adidas
+4  9/10/14 11:52 Under Armour\xca
+5  9/10/14 13:38            Other
+6  9/10/14 14:10            Asics
+7  9/10/14 16:35            Other
+8  9/10/14 18:47            Asics
+9  9/10/14 20:19             Nike
+10 9/10/14 22:10            Other
+11 9/10/14 23:02             Nike
+12 9/10/14 23:47             Nike
+13 9/11/14 11:04             Nike
+14 9/11/14 11:11             Nike
+15 9/11/14 11:14 Under Armour\xca
+16 9/11/14 12:39             Nike
+17 9/11/14 12:45             Nike
+18 9/11/14 12:50             Nike
+19 9/11/14 12:50             Nike
+> shoe_data <- read.csv("shoe_data.csv",header=T)
+> shoe_data
+       Timestamp   shoe
+1   9/10/14 8:14   Nike
+2   9/10/14 8:52   Nike
+3   9/10/14 9:26 Adidas
+4  9/10/14 11:52     UA
+5  9/10/14 13:38  Other
+6  9/10/14 14:10  Asics
+7  9/10/14 16:35  Other
+8  9/10/14 18:47  Asics
+9  9/10/14 20:19   Nike
+10 9/10/14 22:10  Other
+11 9/10/14 23:02   Nike
+12 9/10/14 23:47   Nike
+13 9/11/14 11:04   Nike
+14 9/11/14 11:11   Nike
+15 9/11/14 11:14     UA
+16 9/11/14 12:39   Nike
+17 9/11/14 12:45   Nike
+18 9/11/14 12:50   Nike
+19 9/11/14 12:50   Nike
+> shoe <- table(shoe_data$shoe)
+> shoe
+
+Adidas  Asics   Nike  Other     UA 
+     1      2     11      3      2 
+> barplot(shoe,main="Shoe Style Frequency",xlab="Shoe Type",ylab="Frequency")
+> barplot(shoe,main="Shoe Style Frequency",xlab="Shoe Type",ylab="Frequency",col="blue")
+> colors <- c("red","green","silver","blue","black")
+> barplot(shoe,main="Shoe Style Frequency",xlab="Shoe Type",ylab="Frequency",col=colors)
+Error in rect(y1, x1, y2, x2, ...) : invalid color name 'silver'
+> colors <- c("red","green","purple","blue","black")
+> barplot(shoe,main="Shoe Style Frequency",xlab="Shoe Type",ylab="Frequency",col=colors)
+> 
